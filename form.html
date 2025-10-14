@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>HTML form</legend>
+
+            <label for="your-name">Name:</label> 
+            <input type="text" id="your-name" name="your-name" placeholder="Enter your name" required> <br><br>
+
+            <label for="your-email">Email:</label> 
+            <input type="email" id="your-email" name="your-email" placeholder="Enter your email" required> <br><br>
+
+            <label for="your-contact">Contact:</label>
+            <input type="tel" id="your-contact" name="your-contact" placeholder="Enter your contact number" required> <br><br>
+
+            <label for="your-age">Age:</label>
+            <input type="number" id="your-age" name="your-age" placeholder="Enter your age" required> <br><br>  
+
+            <label for="your-gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male"> Male
+            <input type="radio" id="female" name="gender" value ="female"> Female
+            <input type="radio" id="other" name="gender" value="other"> Other <br><br>
+
+            <label for ="your-branch">Branch:</label>
+            <select id="your-branch" name="your-branch" required>
+                <option value="" disabled selected>Select your branch</option>
+                <option value="cse">CSE</option>
+                <option value="ece">ECE</option>
+                <option value="mech">MECH</option>
+                <option value="civil">CIVIL</option>
+                <option value="chem">CHEM</option>
+            </select> <br><br>  
+
+            <label for="your-subjects">Subjects:</label>    
+            <input type="checkbox" id="maths" name="subjects" value="maths"> Maths
+            <input type="checkbox" id="physics" name="subjects" value="physics"> Physics
+            <input type="checkbox" id="DS" name="subjects" value="DS"> Data Structures
+            <input type="checkbox" id="soft-skills" name="subjects" value="soft-skills"> Soft Skills <br><br>   
+
+
+            <label for="your-DOB">DOB:</label>          
+            <input type="date" id="your-DOB" name="your-DOB" required> <br><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+
+            <label for="your-FILE">Upload your file:</label>                        
+            <input type="file" id="your-FILE" name="your-FILE" accept=".pdf, .doc, .docx, .png, .jpg" required> <br><br>            
+            <label for="your-comments">Comments:</label>
+            <textarea id="your-comments" name="your-comments" rows="4" cols="50" placeholder="Enter your comments here..."></textarea> <br><br>
+
+            <label for="your-IIT-JEE-SCORE">IIT JEE SCORE:</label>
+            <input type="number" id="your-IIT-JEE-SCORE" name="your-IIT-JEE-SCORE" placeholder="Enter your IIT JEE SCORE" required> <br><br>
+
+            <label for="select-YOUR-CORE-Subjects"></label>
+            <select id="select-YOUR-CORE-Subjects" name="select-YOUR-CORE-Subjects" required>
+                <option value="" disabled selected>Select your core subjects</option>
+                <option value="maths">Maths</option>
+                <option value="physics">Physics</option>
+                <option value="DS">Data Structures</option>
+                <option value="soft-skills">Soft Skills</option> <br><br>
+            </select> <br><br>
+
+            <label for="your-MESSAGE">Message:</label>
+            <textarea id="your-MESSAGE" name="your-MESSAGE" rows="4" cols="50" placeholder="Enter your message here..."></textarea> <br><br>
+
+            <label for ="your-PASSWORD">Password:</label>               
+            <input type="password" id="your-PASSWORD" name="your-PASSWORD" placeholder="Enter your password" required> <br><br>
+
+            <input type ="submit" value="Submit">
+            <input type="reset" value="Reset">
+
+        </fieldset>
+    </form>
+</body>
+</html>
