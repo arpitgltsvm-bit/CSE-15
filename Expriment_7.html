@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navigation Menu — block | inline | inline-block | float | clear</title>
+  <style>
+    /* Basic page styles */
+    :root{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#222}
+    body{margin:20px;line-height:1.4}
+    h1,h2{margin:0 0 .5rem}
+    .demo {border:1px dashed #bbb;padding:16px;margin:16px 0;border-radius:8px}
+    .note{font-size:.9rem;color:#555;margin-bottom:.6rem}
+
+    /* ---------- Shared nav styling ---------- */
+    nav {background:#f7f7f7;padding:10px;border-radius:6px}
+    nav a{display:block;padding:8px 12px;text-decoration:none;color:#0b5;}
+    nav a:hover{background:#e0f7e0}
+
+    /* ---------- 1) Block-level links (stacked vertical) ---------- */
+    .nav-block a{ /* block makes each link take full width */
+      display:block; /* default for <a> is inline; switching to block stacks them */
+      background:#fff;border:1px solid #ddd;margin-bottom:6px;border-radius:4px
+    }
+
+    /* ---------- 2) Inline links (text-like) ---------- */
+    .nav-inline a{
+      display:inline; /* inline keeps links flowing like text */
+      padding:6px 8px; /* vertical padding on inline elements affects line height */
+      margin-right:8px;
+      border-radius:4px
+    }
+
+    /* ---------- 3) Inline-block links (horizontal, boxable) ---------- */
+    .nav-inline-block a{
+      display:inline-block; /* inline-block lets elements sit inline but keep box dimensions */
+      padding:8px 14px;border:1px solid #ddd;margin-right:8px;border-radius:4px;background:#fff
+    }
+
+    /* ---------- 4) Float-based horizontal menu ---------- */
+    .nav-float {overflow:auto; /* quick clearfix fallback to contain floats */}
+    .nav-float a{
+      float:left; /* floats sit to the left; we must clear or contain them later */
+      padding:8px 14px;margin-right:8px;border:1px solid #ddd;background:#fff;border-radius:4px
+    }
+
+    /* Classic clearfix utility that works well with floated children */
+    .clearfix::after{
+      content:"";display:table;clear:both
+    }
+
+    /* Demonstrate using "clear" on an element below floats */
+    .below-floats{clear:both;background:#fff;padding:8px;margin-top:10px;border:1px dashed #ccc}
+
+    /* ---------- Responsive small-screen tweak (no floats) ---------- */
+    @media (max-width:520px){
+      .nav-inline-block a, .nav-float a{display:block;float:none;margin-bottom:8px}
+    }
+
+    /* Visual helpers only for this demo */
+    .label{font-weight:600;margin-bottom:8px;display:block}
+    .kbd{font-family:monospace;background:#eee;padding:2px 6px;border-radius:4px;margin-left:6px}
+  </style>
+</head>
+<body>
+  <h1>Navigation menu techniques</h1>
+  <p class="note">This single file demonstrates how <span class="kbd">block</span>, <span class="kbd">inline</span>, <span class="kbd">inline-block</span>, <span class="kbd">float</span>, and <span class="kbd">clear</span> affect navigation items. Use the code as a starter for your site.</p>
+
+  <!-- 1. Block-level (vertical stacked menu) -->
+  <section class="demo">
+    <span class="label">1) Block-level links — stacked vertical menu</span>
+    <nav class="nav-block" aria-label="Block navigation">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="note">Each <code>&lt;a&gt;</code> is <strong>display:block</strong>, so it occupies the full width and stacks vertically.</p>
+  </section>
+
+  <!-- 2. Inline links -->
+  <section class="demo">
+    <span class="label">2) Inline links — text-like flow</span>
+    <nav class="nav-inline" aria-label="Inline navigation">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+    </nav>
+    <p class="note">Using <strong>display:inline</strong> keeps the links in the text flow. Useful for small inline controls.</p>
+  </section>
+
+  <!-- 3. Inline-block (common horizontal menu with box sizing) -->
+  <section class="demo">
+    <span class="label">3) Inline-block — horizontal with block-like sizing</span>
+    <nav class="nav-inline-block" aria-label="Inline-block navigation">
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Features</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="note"><strong>inline-block</strong> allows margins/paddings/widths while remaining inline. No float required. Beware of small gaps caused by whitespace in HTML — two fixes: remove space between tags or set font-size:0 on the parent.</p>
+  </section>
+
+  <!-- 4. Float-based nav + clearfix + clear demonstration -->
+  <section class="demo">
+    <span class="label">4) Float-based horizontal nav + clearfix</span>
+
+    <!-- Wrap floats in a container that uses the clearfix helper -->
+    <nav class="nav-float clearfix" aria-label="Float navigation">
+      <a href="#">Home</a>
+      <a href="#">Catalog</a>
+      <a href="#">Support</a>
+      <a href="#">Login</a>
+    </nav>
+
+    <p class="note">Here each link is <strong>float:left</strong>. The parent uses <code>.clearfix</code> (a pseudo-element that clears floats). Another common technique is to give the parent <code>overflow:auto</code> or <code>overflow:hidden</code> to create a new block formatting context.</p>
+
+    <div class="below-floats">This box uses <code>clear:both</code> so it will always sit below the floated nav items.</div>
+  </section>
+
+  <!-- Extra: Combination with a logo left and float nav right -->
+  <section class="demo">
+    <span class="label">5) Logo left + float menu right (classic header)</span>
+    <header style="overflow:auto;padding:8px;border-radius:6px;background:#fff;border:1px solid #eee">
+      <div style="float:left;font-weight:700">MyLogo</div>
+      <nav style="float:right" aria-label="Header navigation">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <p class="note">Because the header doesn't use a clearfix, we've used <code>overflow:auto</code> on the header to contain its floated children and ensure the header expands to the full height of its contents.</p>
+  </section>
+
+  <!-- Footer with short cheat-sheet -->
+  <footer class="demo">
+    <strong>Quick cheat-sheet</strong>
+    <ul>
+      <li><strong>block</strong> — element takes full width; good for vertical menus</li>
+      <li><strong>inline</strong> — flows with text; can't set width/height safely</li>
+      <li><strong>inline-block</strong> — inline but accepts box properties (padding/width)</li>
+      <li><strong>float</strong> — takes element out of normal flow and floats it to a side; must be cleared/contained</li>
+      <li><strong>clear</strong> — applied to an element to move it past floated siblings (e.g., <code>clear:both</code>)</li>
+    </ul>
+    <p class="note">Want this converted to a navigation component (React / Tailwind / accessible menu with keyboard support)? Tell me which framework and I will adapt it.</p>
+  </footer>
+</body>
+</html>

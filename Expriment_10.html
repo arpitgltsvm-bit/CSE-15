@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive E-commerce Navbar</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Navbar Container */
+    nav {
+        background: #222;
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    /* Menu Links */
+    .menu {
+        display: flex;
+        gap: 20px;
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    /* Mobile Menu Button */
+    .menu-btn {
+        display: none;
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    /* ------ Mobile Breakpoint ------ */
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+            flex-direction: column;
+            background: #333;
+            padding: 20px;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+        }
+
+        /* Show menu button */
+        .menu-btn {
+            display: block;
+        }
+
+        /* Toggle menu (active class added using JS) */
+        .menu.active {
+            display: flex;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<nav>
+    <div class="logo">ShopEasy</div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Offers</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("menu").classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>
